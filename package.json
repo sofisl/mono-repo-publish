@@ -4,7 +4,9 @@
   "description": "publishes submodules based on the last merged release PR",
   "main": "index.js",
   "scripts": {
-    "test": "c8 --reporter html --reporter text mocha test/*"
+    "test": "c8 --reporter html --reporter text mocha test/*",
+    "posttest": "semistandard",
+    "fix": "semistandard --fix"
   },
   "repository": {
     "type": "git",
@@ -20,6 +22,12 @@
     "c8": "^7.4.0",
     "mocha": "^8.2.1",
     "nock": "^13.0.5",
-    "sinon": "^9.2.3"
+    "semistandard": "^16.0.0",
+    "sinon": "^9.2.4"
+  },
+  "dependencies": {
+    "@octokit/auth-app": "^2.11.0",
+    "@octokit/rest": "^18.1.0",
+    "yargs": "^16.2.0"
   }
 }

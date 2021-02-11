@@ -6,3 +6,5 @@
 3. Assemble a list of submodules that need to be updated
 4. Add a new npm token that has permission to publish to submodules and overwrite token that publishes mono-repo 
 5. From the command line, run `npm run publish` sequentially on each submodule
+
+https://github.com/bcoe/c8
