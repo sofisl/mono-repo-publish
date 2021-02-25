@@ -23,11 +23,10 @@ const { Octokit } = require('@octokit/rest');
 const sandbox = sinon.createSandbox();
 
 const changedFiles = require('./fixtures/pull-request-payloads/many-files.json');
-const { exec } = require('child_process');
 nock.disableNetConnect();
 
-//TODO: Add a system-test with a fixture directory with a few fake modules (and a fake PR) and confirm that
-//it tries to publish all the modules (end-to-end test)
+// TODO: Add a system-test with a fixture directory with a few fake modules (and a fake PR) and confirm that
+// it tries to publish all the modules (end-to-end test)
 describe('mono-repo publish', () => {
   afterEach(() => {
     sandbox.restore();
@@ -68,7 +67,6 @@ describe('mono-repo publish', () => {
     core.publishSubmodules(['foo'], false, execSync);
     sandbox.assert.calledWith(execSync.firstCall, 'npm i');
     sandbox.assert.calledWith(execSync.secondCall, 'npm publish');
-
   });
 
   it('passes in --dry-run option', () => {
