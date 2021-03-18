@@ -71,7 +71,7 @@ function publishSubmodules (directories, dryRun, execSyncOverride) {
   const execSync = execSyncOverride || childProcess.execSync;
   for (const directory of directories) {
     execSync('npm i', { cwd: directory, stdio: 'inherit' });
-    execSync(`npm publish${dryRun ? ' --dry-run' : ''}`, { cwd: directory, stdio: 'inherit' });
+    execSync(`npm publish --access=public${dryRun ? ' --dry-run' : ''}`, { cwd: directory, stdio: 'inherit' });
   }
 }
 
