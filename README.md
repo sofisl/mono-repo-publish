@@ -32,4 +32,3 @@ mono-repo-publish --help
 
 Apache Version 2.0
 
-## Test Release-please
