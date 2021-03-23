@@ -50,11 +50,12 @@ function getOctokitInstance () {
 
 // pull in files in PR
 async function getsPRFiles (prObject, octokit) {
-  const files = (await octokit.pulls.listFiles({
+  const files = await octokit.paginate(octokit.pulls.listFiles, {
     owner: prObject.owner,
     repo: prObject.repo,
     pull_number: prObject.number
-  })).data;
+  });
+  console.log(files);
   return files.map(e => e.filename);
 }
 
@@ -68,10 +69,15 @@ function listChangedSubmodules (prFiles) {
 }
 
 function publishSubmodules (directories, dryRun, execSyncOverride) {
+  console.log(`Directories to publish: ${directories}`);
   const execSync = execSyncOverride || childProcess.execSync;
   for (const directory of directories) {
+    try{
     execSync('npm i', { cwd: directory, stdio: 'inherit' });
     execSync(`npm publish --access=public${dryRun ? ' --dry-run' : ''}`, { cwd: directory, stdio: 'inherit' });
+    } catch (err) {
+      console.log(err);
+    }
   }
 }
 
