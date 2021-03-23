@@ -72,9 +72,9 @@ function publishSubmodules (directories, dryRun, execSyncOverride) {
   console.log(`Directories to publish: ${directories}`);
   const execSync = execSyncOverride || childProcess.execSync;
   for (const directory of directories) {
-    try{
-    execSync('npm i', { cwd: directory, stdio: 'inherit' });
-    execSync(`npm publish --access=public${dryRun ? ' --dry-run' : ''}`, { cwd: directory, stdio: 'inherit' });
+    try {
+      execSync('npm i', { cwd: directory, stdio: 'inherit' });
+      execSync(`npm publish --access=public${dryRun ? ' --dry-run' : ''}`, { cwd: directory, stdio: 'inherit' });
     } catch (err) {
       console.log(err);
     }

@@ -66,13 +66,13 @@ describe('mono-repo publish', () => {
     const execSync = sandbox.spy();
     core.publishSubmodules(['foo'], false, execSync);
     sandbox.assert.calledWith(execSync.firstCall, 'npm i');
-    sandbox.assert.calledWith(execSync.secondCall, 'npm publish');
+    sandbox.assert.calledWith(execSync.secondCall, 'npm publish --access=public');
   });
 
   it('passes in --dry-run option', () => {
     const execSync = sandbox.spy();
     core.publishSubmodules(['foo'], true, execSync);
     sandbox.assert.calledWith(execSync.firstCall, 'npm i');
-    sandbox.assert.calledWith(execSync.secondCall, 'npm publish --dry-run');
+    sandbox.assert.calledWith(execSync.secondCall, 'npm publish --access=public --dry-run');
   });
 });
