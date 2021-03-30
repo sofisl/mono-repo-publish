@@ -59,7 +59,7 @@ describe('mono-repo publish', () => {
 
   it('identifies submodules that have been changed', () => {
     const submodules = core.listChangedSubmodules(changedFiles.map(l => l.filename));
-    assert.deepStrictEqual(submodules, ['packages/firstPackage', 'packages/secondPackage']);
+    assert.deepStrictEqual(submodules, ['packages/firstPackage', 'packages/secondPackage', '.']);
   });
 
   it('passes in the right arguments for npm publish', () => {

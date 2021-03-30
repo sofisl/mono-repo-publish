@@ -63,7 +63,7 @@ async function getsPRFiles (prObject, octokit) {
 function listChangedSubmodules (prFiles) {
   // Only checking for package.jsons in submodules that were changed
   // Not checking the top-level package.json
-  const files = prFiles.filter(file => file.match(/\/package\.json$/));
+  const files = prFiles.filter(file => file.match(/\/package\.json$|^package\.json$/));
   const directories = files.map(x => dirname(x));
   return directories;
 }
